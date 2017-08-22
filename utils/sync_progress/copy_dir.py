@@ -19,19 +19,62 @@ def sizeof_fmt(num, suffix='B'):
     num /= 1024.0
   return "%.1f%s%s" % (num, 'Yi', suffix)
 
-def walkdir(root_path, X=0, foo=lambda x: x.stat().st_size):
+def getSize(dirEntry):
+  return dirEntry.stat().st_size
+
+def getCount(dirEntry):
+  return 1
+
+def walkdir(root_path, foo=getSize, out=0):
   for entry in os.scandir(root_path):
     if entry.is_dir():
-      print(entry.name, sizeof_fmt(X))
-      y = walkdir(entry, 0, foo)
-      print(sizeof_fmt(y))
-      X += y
+      fooOut = walkdir(entry, foo)
+      out += fooOut
     else:
-      print(entry.name)
-      X += foo(entry)
-  return X
+      out += foo(entry)
+  return out
+
+total_size = walkdir(SOURCE_ROOT, getSize)
+print(sizeof_fmt(total_size))
 
 
-X = walkdir(SOURCE_ROOT)
+def walkdir(root_path, out=list()):
+  for entry in os.scandir(root_path):
+    if entry.is_dir():
+      # print(entry.path)
+      fooOut = walkdir(entry.path, out=list())
+      # print(fooOut)
+      out.extend(fooOut)
+    else:
+      out.append(entry)
+  return out
 
-print(sizeof_fmt(X))
+folder = walkdir(SOURCE_ROOT)
+# print(folder)
+print(folder[-1])
+print(folder[-2])
+print(folder[-3])
+print(folder[-4])
+# print(len(folder[-5]))
+# print(folder[-5][-5][-5])
+print(len(folder))
+
+def walkdir(root_path, out=set()):
+  for entry in os.scandir(root_path):
+    if entry.is_dir():
+      # print(entry.path)
+      fooOut = walkdir(entry.path)
+      out.union(fooOut)
+    else:
+      out.add(entry)
+  return out
+
+folder = walkdir(SOURCE_ROOT)
+print(len(folder))
+
+class Folder:
+  def __init__(self):
+    self.files = []
+    self.subfolders = []
+    self.total_size = 0
+
