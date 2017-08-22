@@ -1,4 +1,5 @@
 # execute configuration scripts in ./configs
 
 ./configs/ssh.sh
-./configs/terminal.sh
+./configs/jvm.sh
+./configs/transmission.sh
