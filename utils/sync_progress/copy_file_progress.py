@@ -52,7 +52,6 @@ class CopyFile:
           print(idx, progress)
           self.bar.update(progress)
 
-
 if __name__ == "__main__":
   file_name = "A Clockwork Orange 1971.mp4"
   src_path = os.path.join(SOURCE_ROOT, file_name)
