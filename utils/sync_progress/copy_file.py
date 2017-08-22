@@ -10,8 +10,6 @@ DEST_ROOT=os.path.join(os.path.abspath(os.path.curdir),"DEST")
 print(DEST_ROOT)
 print(os.path.exists(DEST_ROOT))
 
-
-
 def validate_dir(dir_path):
   valid = os.path.isdir(dir_path)
   if not valid:
@@ -31,7 +29,8 @@ def validate_dst(dst_path):
     raise FileExistsError(dst_path)
 
 class CopyFileTask:
-  def __init__(self, src, dst):
+  def __init__(self, src_path, dst_path):
+    
     validate_src(src)
     validate_dst(dst)
 
