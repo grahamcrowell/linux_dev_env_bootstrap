@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install jenkins
 
 # see https://wiki.jenkins.io/display/JENKINS/Starting+and+Accessing+Jenkins

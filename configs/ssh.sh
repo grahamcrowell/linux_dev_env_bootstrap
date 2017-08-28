@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # configure ssh connections to ubuntu server
 

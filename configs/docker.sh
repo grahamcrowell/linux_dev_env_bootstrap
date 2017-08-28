@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install docker ce
 
 # https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository

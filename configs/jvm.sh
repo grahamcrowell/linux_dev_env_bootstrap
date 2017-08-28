@@ -1,3 +1,4 @@
+#!/bin/bash
 # install java development kit
 
 sudo apt-get update
