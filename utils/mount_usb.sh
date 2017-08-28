@@ -4,10 +4,13 @@
 sudo fdisk -l
 
 # make dir to map drive to
-sudo mkdir /media/usb
+sudo mkdir /media/netdrive
+
+# install helper 
+sudo apt-get install cifs-utils
 
 # mount it
-sudo mount --source /dev/sdb1 --target /media/usb
+sudo mount --source /dev/sdb1 --target /media/netdrive
 
 printf "device mounted to: /media/usb\n"
 ls -l /media/usb
