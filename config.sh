@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# configure git repo 
+
+git config --global user.name "user"
+git config --global user.email "user@gmail.com"
+
 # execute configuration scripts in ./configs
 
 ./configs/ssh.sh

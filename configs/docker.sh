@@ -21,4 +21,16 @@ sudo add-apt-repository \
 
 sudo apt-get update
 
+# https://github.com/grahamcrowell/docker-transmission-openvpn
+
 sudo apt-get install docker-ce
+
+# docker run --cap-add=NET_ADMIN --device=/dev/net/tun -d \
+#               -v /transmission:/data \
+#               -v /etc/localtime:/etc/localtime:ro \
+#               -e "OPENVPN_PROVIDER=NORDVPN" \
+#               -e "OPENVPN_USERNAME=graham.crowell@yahoo.com" \
+#               -e "OPENVPN_PASSWORD=2and2is5" \
+#               -e LOCAL_NETWORK=192.168.0.0/24 \
+#               -p 9091:9091 \
+#               haugene/transmission-openvpn

@@ -2,10 +2,12 @@
 # install java development kit
 
 sudo apt-get update
-sudo apt-get install default-jdk
-sudo apt-get install default-jdk-doc
-# sudo apt-get install default-jre
 javac -version
+# add these lines to /etc/environment
+# JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+# export JAVA_HOME
+echo $JAVA_HOME
+
 
 # install sbt
 
