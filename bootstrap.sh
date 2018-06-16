@@ -50,6 +50,21 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get update
 sudo apt-get install -y code # or code-insiders
+# fix inotify error
+echo "customize max file watch handles"
+echo "current max: "
+cat /proc/sys/fs/inotify/max_user_watches
+if [[ `cat /etc/sysctl.conf | grep "fs.inotify.max_user_watches="` -ne 0 ]]
+then
+    echo "max file watch handlers not yet custmized";
+    echo "fs.inotify.max_user_watches=524288 >> /etc/sysctl.conf"
+    sudo echo "fs.inotify.max_user_watches=524288" >> /etc/sysctl.conf
+else
+    echo "max file watch handlers already customized";
+    echo "go to: https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc"
+fi
+
+fs.inotify.max_user_watches=524288
 
 # java
 # https://stackoverflow.com/a/49507161
