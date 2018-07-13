@@ -1,18 +1,16 @@
-#! /usr/bin/env sh
+#! /usr/bin/env bash
 
 # update apt-get
 sudo apt-get update
 # upgrade all installed apps
 sudo apt-get upgrade
 # log default install
-mkdir ~/Documents/logs
-apt list --installed >> ~/Documents/logs/default_installs.log
+mkdir ~/Documents/.install_logs
+apt list --installed >> ~/Documents/.default_installs/`date +%Y%m%d`_installs.log
 
-# curl
-sudo apt-get install -y curl
 
-# htop
-sudo apt-get install -y htop
+./install_nodeps.sh
+
 
 # git
 ./install_git.sh
@@ -63,7 +61,6 @@ else
     echo "max file watch handlers already customized";
     echo "go to: https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc"
 fi
-
 fs.inotify.max_user_watches=524288
 
 # java
