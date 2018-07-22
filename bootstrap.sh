@@ -92,3 +92,5 @@ sudo apt-get install golang-1.10-go
 # shfmt (for vscode)
 /usr/lib/go-1.10/bin/go get -u mvdan.cc/sh/cmd/shfmt
 
+# watchman see https://facebook.github.io/watchman/
+brew install watchman
